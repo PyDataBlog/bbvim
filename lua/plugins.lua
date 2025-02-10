@@ -16,6 +16,7 @@ local plugins = {
 	{ import = "plugins.bufferline" },
 	{ import = "plugins.overseer" },
 	{ import = "plugins.lualine" },
+	{ import = "plugins.flash" },
 }
 
 require("lazy").setup(plugins, {

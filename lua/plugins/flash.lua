@@ -1,6 +1,6 @@
 return {
 	"folke/flash.nvim",
-	event = "VeryLazy",
+	event = { "BufReadPre", "BufNewFile" },
 	---@type Flash.Config
 	opts = {},
   -- stylua: ignore
@@ -12,3 +12,4 @@ return {
     { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
   },
 }
+
