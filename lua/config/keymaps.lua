@@ -39,3 +39,14 @@ keymap.set("n", "<leader>oc", "<cmd>OverseerClearCache<CR>", { desc = "Clear cac
 keymap.set("n", "<leader>ol", "<cmd>OverseerLoadBundle<CR>", { desc = "Load saved bundle" })
 keymap.set("n", "<leader>os", "<cmd>OverseerSaveBundle<CR>", { desc = "Save task bundle" })
 keymap.set("n", "<leader>od", "<cmd>OverseerDeleteBundle<CR>", { desc = "Delete task bundle" })
+
+-------------------------------- Terminal -----------------------------------------------
+keymap.set("t", "C-x", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
+
+------------------------------ Bufferline mappings ------------------------------
+keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "Close buffer" })
+keymap.set("n", "<leader>bD", "<cmd>BufferLineCloseOthers<CR>", { desc = "Close all buffers except current" })
+keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin buffer" })
+keymap.set("n", "<leader>bb", "<cmd>BufferLinePick<CR>", { desc = "Pick buffer" })

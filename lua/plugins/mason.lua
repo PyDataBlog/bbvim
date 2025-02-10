@@ -1,6 +1,6 @@
 return {
 	"williamboman/mason.nvim",
-	event = "InsertEnter",
+	-- event = "InsertEnter",
 	dependencies = {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
