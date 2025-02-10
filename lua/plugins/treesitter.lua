@@ -63,6 +63,7 @@ return {
 				"tsv",
 				"tsx",
 				"typescript",
+				"typst",
 				"vim",
 				"vue",
 				"xml",
@@ -113,3 +114,4 @@ return {
 		})
 	end,
 }
+

@@ -19,7 +19,7 @@ return {
 		rename = { enabled = true },
 		scratch = { enabled = true },
 		terminal = { enabled = true },
-		toggle = { enabled = false },
+		toggle = { enabled = true },
 		picker = { enabled = true },
 		quickfile = { enabled = true },
 		scope = { enabled = true },

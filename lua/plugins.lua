@@ -1,4 +1,5 @@
 local plugins = {
+	-- Ungrouped Plugins
 	{ import = "plugins.catppuccin" },
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.mason" },
@@ -17,6 +18,20 @@ local plugins = {
 	{ import = "plugins.overseer" },
 	{ import = "plugins.lualine" },
 	{ import = "plugins.flash" },
+	{ import = "plugins.markview"},
+
+	-- MINI NVIM Plugins
+	{ import = "plugins.mini-ai" },
+	{ import = "plugins.mini-bracketed" },
+	{ import = "plugins.mini-cursorword" },
+	{ import = "plugins.mini-files" },
+	{ import = "plugins.mini-indentscope" },
+	{ import = "plugins.mini-move"},
+	{ import = "plugins.mini-pairs"},
+	{ import = "plugins.mini-sessions"},
+	{ import = "plugins.mini-splitjoin"},
+	{ import = "plugins.mini-surround"},
+	{ import = "plugins.mini-trailspace"},
 }
 
 require("lazy").setup(plugins, {
