@@ -26,6 +26,8 @@ local plugins = {
 	{ import = "plugins.nvim-dbee" },
 	{ import = "plugins.rainbow-delimiters" },
 	{ import = "plugins.rust-vim" },
+	{ import = "plugins.trouble" },
+	{ import = "plugins.kuala-nvim" },
 
 	-- MINI NVIM Plugins
 	{ import = "plugins.mini-ai" },

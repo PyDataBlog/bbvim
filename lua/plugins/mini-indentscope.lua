@@ -24,6 +24,10 @@ return {
 				"mini-starter",
 				"NvimTree",
                 "snacks_terminal",
+				"snacks_dashboard",
+				"snacks_notif",
+				"snacks_terminal",
+				"snacks_win",
 			},
 			callback = function()
 				vim.b.miniindentscope_disable = true

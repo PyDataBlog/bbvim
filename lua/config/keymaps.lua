@@ -3,6 +3,13 @@ local keymap = vim.keymap -- for conciseness
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+----------------------- General mappings ------------------------------
+keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+
+-- Insert lines above/below without leaving normal mode
+keymap.set("n", "oo", "o<Esc>k", { silent = true })
+keymap.set("n", "OO", "O<Esc>j", { silent = true })
+
 --------------------  CMD enter command mode with ; -------------------
 keymap.set("n", ";", ":", { desc = "CMD enter command mode" })
 
@@ -19,7 +26,6 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 --------------------  clear search highlights -------------------
 keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR><Esc>", { desc = "Clear search highlights and resume normal operations" })
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 --------------------  File operations -------------------
 keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "File Save" }) -- save current file
@@ -119,3 +125,48 @@ keymap.set(
 	"<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input('WhichKey: '))<CR>",
 	{ desc = "Whichkey Query Lookup" }
 )
+
+------------------------------ Neotest mappings --------------------------------------------
+keymap.set("n", "<leader>tm", "<cmd>lua require('neotest').run.run()<cr>", { desc = "Test Method" })
+keymap.set(
+	"n",
+	"<leader>tM",
+	"<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>",
+	{ desc = "Test Method DAP" }
+)
+keymap.set("n", "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { desc = "Test Class" })
+keymap.set(
+	"n",
+	"<leader>tF",
+	"<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>",
+	{ desc = "Test Class DAP" }
+)
+keymap.set("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", { desc = "Test Summary" })
+
+------------------------------ Kulala mappings -----------------------------------
+keymap.set("n", "<leader>kr", "<cmd>lua require('kulala').run()<CR>", { desc = "Run the current request" })
+keymap.set("n", "<leader>kp", "<cmd>lua require('kulala').jump_prev()<CR>", { desc = "Jump to the previous request" })
+keymap.set("n", "<leader>kn", "<cmd>lua require('kulala').jump_next()<CR>", { desc = "Jump to the next request" })
+keymap.set("n", "<leader>ki", "<cmd>lua require('kulala').inspect()<CR>", { desc = "Inspect the current request" })
+
+-------------------------------- LSP mappings -----------------------------------
+keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+
+------------------------------  Trouble mappings ------------------------------
+keymap.set("n", "<leader>tt", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
+keymap.set(
+	"n",
+	"<leader>tT",
+	"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+	{ desc = "Buffer Diagnostics (Trouble)" }
+)
+keymap.set("n", "<leader>tS", "<cmd>Trouble symbols toggle focus=false<CR>", { desc = "Symbols (Trouble)" })
+keymap.set(
+	"n",
+	"<leader>tl",
+	"<cmd>Trouble lsp toggle focus=false win.position=right<CR>",
+	{ desc = "LSP Definitions / references / ... (Trouble)" }
+)
+keymap.set("n", "<leader>tL", "<cmd>Trouble loclist toggle<CR>", { desc = "Location List (Trouble)" })
+keymap.set("n", "<leader>tQ", "<cmd>Trouble qflist toggle<CR>", { desc = "Quickfix List (Trouble)" })
+

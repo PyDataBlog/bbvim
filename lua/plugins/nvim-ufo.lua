@@ -45,6 +45,10 @@ return {
 						"noice",
 						"lazy",
 						"toggleterm",
+						"snacks_dashboard",
+						"snacks_notif",
+						"snacks_terminal",
+						"snacks_win",
 					},
 					segments = {
 						{ text = { " " } },

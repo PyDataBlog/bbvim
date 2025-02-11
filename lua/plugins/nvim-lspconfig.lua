@@ -4,75 +4,26 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"saghen/blink.cmp",
+		{ "b0o/SchemaStore.nvim", lazy = true, version = false },
 	},
 	config = function()
-		-- Import necessary plugins
 		local lspconfig = require("lspconfig")
 		local mason_lspconfig = require("mason-lspconfig")
 		local blink_cmp = require("blink.cmp")
+		-- The schemastore module will lazy-load thanks to the dependency declaration
+		local schemastore = require("schemastore")
 
-		-- Set up capabilities for autocompletion
+		-- Set up LSP capabilities
 		local capabilities = blink_cmp.get_lsp_capabilities()
 
-		-- Customize Diagnostic symbols in the sign column
+		-- Customize diagnostic signs in the sign column
 		local signs = { Error = " ", Warn = " ", Hint = "💡", Info = " " }
 		for type, icon in pairs(signs) do
 			local hl = "DiagnosticSign" .. type
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
-		-- local keymap = vim.keymap -- For conciseness
-
-		-- Create an autocmd for LSP attachment to set keybindings
-		-- vim.api.nvim_create_autocmd("LspAttach", {
-		-- 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-		-- 	callback = function(ev)
-		-- 		-- Buffer local mappings
-		-- 		local opts = { buffer = ev.buf, silent = true }
-
-		-- 		-- Set keybinds with descriptions
-		-- 		opts.desc = "Show LSP references"
-		-- 		keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
-
-		-- 		opts.desc = "Go to declaration"
-		-- 		keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-
-		-- 		opts.desc = "Go to definition"
-		-- 		keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-
-		-- 		opts.desc = "Show LSP implementations"
-		-- 		keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-
-		-- 		opts.desc = "Show LSP type definitions"
-		-- 		keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
-
-		-- 		opts.desc = "See available code actions"
-		-- 		keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-
-		-- 		opts.desc = "Smart rename"
-		-- 		keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-
-		-- 		opts.desc = "Show buffer diagnostics"
-		-- 		keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
-
-		-- 		opts.desc = "Show line diagnostics"
-		-- 		keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-
-		-- 		opts.desc = "Go to previous diagnostic"
-		-- 		keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-
-		-- 		opts.desc = "Go to next diagnostic"
-		-- 		keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-
-		-- 		opts.desc = "Show documentation for what is under cursor"
-		-- 		keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-		-- 		opts.desc = "Restart LSP"
-		-- 		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
-		-- 	end,
-		-- })
-
-		-- Define on_attach function for Ruff (Python linter)
+		-- on_attach function for ruff (Python linter)
 		local ruff_on_attach = function(client, bufnr)
 			if client.name == "ruff" then
 				-- Disable hover in favor of Pyright
@@ -81,14 +32,14 @@ return {
 		end
 
 		mason_lspconfig.setup_handlers({
-			-- Default handler for all installed servers
+			-- Default handler: applies to any server without a specific handler.
 			function(server_name)
 				lspconfig[server_name].setup({
 					capabilities = capabilities,
 				})
 			end,
 
-			-- Specific handler for gopls with custom settings
+			-- Handler for gopls with custom settings.
 			["gopls"] = function()
 				lspconfig.gopls.setup({
 					capabilities = capabilities,
@@ -131,13 +82,12 @@ return {
 				})
 			end,
 
-			-- Handler for lua_ls with special settings
+			-- Handler for lua_ls with special settings.
 			["lua_ls"] = function()
-				lspconfig["lua_ls"].setup({
+				lspconfig.lua_ls.setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
-							-- Make the language server recognize "vim" global
 							diagnostics = {
 								globals = { "vim" },
 							},
@@ -152,16 +102,14 @@ return {
 				})
 			end,
 
-			-- Handler for ruff language server
+			-- Handler for ruff.
 			["ruff"] = function()
-				lspconfig["ruff"].setup({
+				lspconfig.ruff.setup({
 					capabilities = capabilities,
 					on_attach = ruff_on_attach,
 					init_options = {
 						settings = {
-							format = {
-								preview = true,
-							},
+							format = { preview = true },
 							lint = {
 								enable = true,
 								preview = true,
@@ -181,12 +129,8 @@ return {
 								extendIgnore = {},
 							},
 							codeAction = {
-								disableRuleComment = {
-									enable = true,
-								},
-								fixViolation = {
-									enable = true,
-								},
+								disableRuleComment = { enable = true },
+								fixViolation = { enable = true },
 							},
 							showSyntaxErrors = true,
 							organizeImports = true,
@@ -214,19 +158,66 @@ return {
 				})
 			end,
 
-			-- Handler for basedpyright (Python language server)
+			-- Handler for basedpyright (Python language server).
 			["basedpyright"] = function()
-				lspconfig["basedpyright"].setup({
+				lspconfig.basedpyright.setup({
 					capabilities = capabilities,
 					settings = {
 						disableOrganizeImports = true,
-						basedpyright = {
-							typeCheckingMode = "standard",
-						},
+						basedpyright = { typeCheckingMode = "standard" },
 						analysis = {
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
-							-- ignore = { "*" },
+						},
+					},
+				})
+			end,
+
+			-- Handler for the JSON language server (jsonls) with SchemaStore integration.
+			["jsonls"] = function()
+				lspconfig.jsonls.setup({
+					capabilities = capabilities,
+					on_new_config = function(new_config)
+						new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+						vim.list_extend(new_config.settings.json.schemas, schemastore.json.schemas())
+					end,
+					settings = {
+						json = {
+							format = { enable = true },
+							validate = { enable = true },
+						},
+					},
+				})
+			end,
+
+			-- Handler for the YAML language server (yamlls) with SchemaStore integration.
+			["yamlls"] = function()
+				lspconfig.yamlls.setup({
+					capabilities = vim.tbl_deep_extend("force", capabilities, {
+						textDocument = {
+							foldingRange = {
+								dynamicRegistration = false,
+								lineFoldingOnly = true,
+							},
+						},
+					}),
+					on_new_config = function(new_config)
+						new_config.settings.yaml.schemas = vim.tbl_deep_extend(
+							"force",
+							new_config.settings.yaml.schemas or {},
+							schemastore.yaml.schemas()
+						)
+					end,
+					settings = {
+						redhat = { telemetry = { enabled = false } },
+						yaml = {
+							keyOrdering = false,
+							format = { enable = true },
+							validate = true,
+							schemaStore = {
+								enable = false,
+								url = "",
+							},
 						},
 					},
 				})
@@ -234,3 +225,4 @@ return {
 		})
 	end,
 }
+

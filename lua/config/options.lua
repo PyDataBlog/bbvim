@@ -1,7 +1,7 @@
 local opt = vim.opt -- for conciseness
 local g = vim.g
 
-opt.guicursor = ""
+opt.guicursor = "n-v-c-sm:block,i:ver50,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 opt.updatetime = 50
 
 -- line numbers
