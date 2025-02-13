@@ -28,6 +28,7 @@ local plugins = {
 	{ import = "plugins.rust-vim" },
 	{ import = "plugins.trouble" },
 	{ import = "plugins.kuala-nvim" },
+	{ import = "plugins.oil" },
 
 	-- MINI NVIM Plugins
 	{ import = "plugins.mini-ai" },

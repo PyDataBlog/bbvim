@@ -50,8 +50,6 @@ keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, de
 ------------------------------ Bufferline mappings ------------------------------
 keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-tab>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
-keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "Close buffer" })
-keymap.set("n", "<leader>bD", "<cmd>BufferLineCloseOthers<CR>", { desc = "Close all buffers except current" })
 keymap.set("n", "<leader>bp", "<cmd>BufferLineTogglePin<CR>", { desc = "Toggle Pin buffer" })
 keymap.set("n", "<leader>bb", "<cmd>BufferLinePick<CR>", { desc = "Pick buffer" })
 
@@ -170,3 +168,8 @@ keymap.set(
 keymap.set("n", "<leader>tL", "<cmd>Trouble loclist toggle<CR>", { desc = "Location List (Trouble)" })
 keymap.set("n", "<leader>tQ", "<cmd>Trouble qflist toggle<CR>", { desc = "Quickfix List (Trouble)" })
 
+------------------------------ Lazy plugin manager mappings ------------------------------
+keymap.set("n", "<leader>lz", "<cmd>Lazy<CR>", { desc = "Lazy Plugin Manager" })
+
+------------------------------ Mason mappings ------------------------------
+keymap.set("n", "<leader>ms", "<cmd>Mason<CR>", { desc = "Mason Config" })

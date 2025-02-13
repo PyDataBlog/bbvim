@@ -1,6 +1,6 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	event = "VimEnter",
+	event = { "BufReadPre", "BufNewFile" },
 	init = function()
 		vim.o.foldcolumn = "auto"
 		vim.o.foldlevel = 99
@@ -131,3 +131,4 @@ return {
 		end,
 	},
 }
+

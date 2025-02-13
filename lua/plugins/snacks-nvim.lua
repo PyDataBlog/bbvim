@@ -34,6 +34,7 @@ return {
 		dim = { enabled = true },
 		lazygit = { enabled = true },
 		zen = { enabled = true },
+		bufdelete = { enabled = true },
 	},
 	keys = {
 		-- Top Pickers & Explorer
@@ -352,6 +353,20 @@ return {
 			desc = "LSP Workspace Symbols",
 		},
 		-- Other
+		{
+			"<leader>x",
+			function()
+				Snacks.bufdelete()
+			end,
+			desc = "Buffer delete",
+		},
+		{
+			"<leader>bD",
+			function()
+				Snacks.bufdelete.other()
+			end,
+			desc = "Buffer delete others except current one",
+		},
 		{
 			"<leader>z",
 			function()
