@@ -43,6 +43,9 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
+-- system clipboard by default for all yanks
+opt.clipboard = "unnamedplus"
+
 -- disable some default providers
 g["loaded_python_provider"] = 0
 g["loaded_python3_provider"] = 0

@@ -29,6 +29,11 @@ local plugins = {
 	{ import = "plugins.trouble" },
 	{ import = "plugins.kuala-nvim" },
 	{ import = "plugins.oil" },
+	{ import = "plugins.tiny-glimmer" },
+	{ import = "plugins.conn-manager" },
+	{ import = "plugins.csvview" },
+	-- { import = "plugins.noice" },
+	{ import = "plugins.hardtime" },
 
 	-- MINI NVIM Plugins
 	{ import = "plugins.mini-ai" },
