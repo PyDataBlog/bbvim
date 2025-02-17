@@ -1,6 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
-    event = "BufReadPre",
+	event = "BufReadPre",
 	dependencies = { "nvim-tree/nvim-web-devicons", "stevearc/overseer.nvim" },
 	config = function()
 		local lualine = require("lualine")
@@ -54,7 +54,7 @@ return {
 
 		lualine.setup({
 			options = {
-				theme = "auto",
+				theme = "catppuccin",
 			},
 			sections = {
 				lualine_x = {
@@ -99,3 +99,4 @@ return {
 		})
 	end,
 }
+

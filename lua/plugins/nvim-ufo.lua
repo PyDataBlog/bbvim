@@ -49,6 +49,10 @@ return {
 						"snacks_notif",
 						"snacks_terminal",
 						"snacks_win",
+						"dbee",
+						"dbee-call-log",
+						"dbee-result",
+						"dbee-drawer",
 					},
 					segments = {
 						{ text = { " " } },
@@ -131,4 +135,3 @@ return {
 		end,
 	},
 }
-

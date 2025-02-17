@@ -61,6 +61,11 @@ return {
 				flash = true,
 				mason = false,
 				semantic_tokens = true,
+				avante = true,
+				snacks = true,
+				grug_far = true,
+				harpoon = true,
+				markdown = true,
 				mini = {
 					enabled = true,
 					indentscope_color = "",
