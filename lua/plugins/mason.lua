@@ -48,7 +48,13 @@ return {
 				"tflint",
 				-- docker
 				"hadolint",
+				-- go
+				"gotests",
+				"gomodifytags",
+				"goimports",
+				"go-debug-adapter",
 				------- LANGUAGE SERVERS ----------
+				"gopls",
 				"basedpyright",
 				"ruff",
 				"taplo",
