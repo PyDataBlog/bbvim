@@ -121,7 +121,7 @@ return {
 			function()
 				require("dap").terminate()
 			end,
-			desc = "Stop Debugging",
+			desc = "Terminate current debugging session",
 		},
 	},
 	config = function()
