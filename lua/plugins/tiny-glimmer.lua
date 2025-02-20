@@ -1,6 +1,6 @@
 return {
 	"rachartier/tiny-glimmer.nvim",
-	event = "BufReadPost",
+	event = "BufReadPre",
 	opts = {
 		disable_warnings = false,
 		animations = {

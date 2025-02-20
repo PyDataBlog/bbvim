@@ -5,8 +5,32 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
-		explorer = { enabled = false },
+		dashboard = {
+			enabled = true,
+			preset = {
+				header = [[
+██████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+██╔══██╗██╔══██╗██║   ██║██║████╗ ████║
+██████╔╝██████╔╝██║   ██║██║██╔████╔██║
+██╔══██╗██╔══██╗╚██╗ ██╔╝██║██║╚██╔╝██║
+██████╔╝██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+]],
+			},
+			sections = {
+				-- {
+				-- 	pane = 2,
+				-- 	section = "terminal",
+				-- 	cmd = "chafa ~/.config/nvim/pngegg.png --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+				-- 	height = 17,
+				-- 	padding = 1,
+				-- },
+				{ section = "header" },
+				{ section = "keys", gap = 1, padding = 1 },
+				{ section = "startup" },
+			},
+		},
+		explorer = { enabled = true },
 		indent = { enabled = false },
 		input = { enabled = true },
 		notifier = {
@@ -23,7 +47,9 @@ return {
 		scratch = { enabled = true },
 		terminal = { enabled = true },
 		toggle = { enabled = true },
-		picker = { enabled = true },
+		picker = { enabled = true, sources = {
+			files = { hidden = true },
+		} },
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false },

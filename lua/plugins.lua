@@ -32,8 +32,9 @@ local plugins = {
 	{ import = "plugins.tiny-glimmer" },
 	{ import = "plugins.conn-manager" },
 	{ import = "plugins.csvview" },
-	-- { import = "plugins.noice" },
+	{ import = "plugins.noice" },
 	{ import = "plugins.hardtime" },
+	{ import = "plugins.todo-comments" },
 
 	-- MINI NVIM Plugins
 	{ import = "plugins.mini-ai" },

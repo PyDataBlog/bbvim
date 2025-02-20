@@ -190,6 +190,8 @@ keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Fi
 keymap.set("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
 keymap.set("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
 keymap.set("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
+keymap.set("n", "<leader>ft", function() Snacks.picker.todo_comments() end, { desc = "TODOs" })
+keymap.set("n", "<leader>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, { desc = "TODO/FIX/FIXMEs" })
 
 -- Grep
 keymap.set("n", "<leader>sb", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
@@ -229,6 +231,12 @@ keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc
 keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
 keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
 keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
+keymap.set(
+  { "n", "v" },
+  "<leader>fm",
+  "<cmd>lua require('conform').format({lsp_fallback = true, async = false, timeout_ms = 1000})<CR>",
+  { desc = "Format file or range (in visual mode)" }
+) -- format document or selection
 
 -- Other
 keymap.set("n", "<leader>x", function() Snacks.bufdelete() end, { desc = "Buffer delete" })
@@ -266,3 +274,19 @@ end, { desc = "Neovim News" })
 
 keymap.set("n", "<leader>ld", function() Snacks.terminal("lazydocker") end, { desc = "Lazydocker" })
 -- stylua: ignore end
+
+------------------------------ Debugging (DAP) mappings ------------------------------------
+keymap.set("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle breakpoint" })
+keymap.set("n", "<leader>dc", "<cmd> DapContinue <CR>", { desc = "Continue" })
+keymap.set("n", "<leader>di", "<cmd> DapStepInto <CR>", { desc = "Step into" })
+keymap.set("n", "<leader>do", "<cmd> DapStepOut <CR>", { desc = "Step out" })
+keymap.set("n", "<leader>ds", "<cmd> DapStepOver <CR>", { desc = "Step over" })
+keymap.set("n", "<leader>df", "<cmd> lua require('dap').continue()<CR>", { desc = "Start a debugging session" })
+keymap.set("n", "<leader>dq", "<cmd> DapTerminate <CR>", { desc = "Stop debugging" })
+-- F keys
+keymap.set("n", "<F9>", "<cmd> DapToggleBreakpoint <CR>", { desc = "Toggle breakpoint" })
+keymap.set("n", "<F5>", "<cmd> DapContinue <CR>", { desc = "Continue" })
+keymap.set("n", "<F1>", "<cmd> DapStepInto <CR>", { desc = "Step into" })
+keymap.set("n", "<F2>", "<cmd> DapStepOver <CR>", { desc = "Step over" })
+keymap.set("n", "<F3>", "<cmd> DapStepOut <CR>", { desc = "Step out" })
+keymap.set("n", "<F8>", "<cmd> DapTerminate <CR>", { desc = "Stop debugging" })

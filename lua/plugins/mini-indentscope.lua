@@ -23,7 +23,7 @@ return {
 				"trouble",
 				"mini-starter",
 				"NvimTree",
-                "snacks_terminal",
+				"snacks_terminal",
 				"snacks_dashboard",
 				"snacks_notif",
 				"snacks_terminal",
@@ -38,3 +38,4 @@ return {
 		require("mini.indentscope").setup(opts)
 	end,
 }
+

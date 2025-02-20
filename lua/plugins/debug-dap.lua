@@ -1,16 +1,5 @@
--- debug.lua
---
--- Shows how to use the DAP plugin to debug your code.
---
--- Primarily focused on configuring the debugger for Go, but can
--- be extended to other languages as well. That's why it's called
--- kickstart.nvim and not kitchen-sink.nvim ;)
-
 return {
-	-- NOTE: Yes, you can install new plugins here!
 	"mfussenegger/nvim-dap",
-	-- event = "LspAttach",
-	-- NOTE: And you can specify dependencies as well
 	dependencies = {
 		-- Creates a beautiful debugger UI
 		"rcarriga/nvim-dap-ui",
@@ -28,7 +17,6 @@ return {
 		{ "mfussenegger/nvim-dap-python", ft = "python" },
 	},
 	keys = {
-		-- Basic debugging keymaps, feel free to change to your liking!
 		{
 			"<F5>",
 			function()
@@ -78,6 +66,62 @@ return {
 				require("dapui").toggle()
 			end,
 			desc = "Debug: See last session result.",
+		},
+		{
+			"<F8>",
+			function()
+				require("dap").terminate()
+			end,
+			desc = "Debug: Terminate",
+		},
+		{
+			"<leader>db",
+			function()
+				require("dap").toggle_breakpoint()
+			end,
+			desc = "Toggle Breakpoint",
+		},
+		{
+			"<leader>dc",
+			function()
+				require("dap").continue()
+			end,
+			desc = "Continue",
+		},
+		{
+			"<leader>di",
+			function()
+				require("dap").step_into()
+			end,
+			desc = "Step Into",
+		},
+		{
+			"<leader>do",
+			function()
+				require("dap").step_out()
+			end,
+			desc = "Step Out",
+		},
+		{
+			"<leader>ds",
+			function()
+				require("dap").step_over()
+			end,
+			desc = "Step Over",
+		},
+		{
+			"<leader>df",
+			function()
+				require("dap").continue()
+			end,
+			desc = "Start Debug Session",
+		},
+		{
+			"<leader>dq",
+			function()
+				require("dap").terminate()
+			end,
+			desc = "Stop Debugging",
 		},
 	},
 	config = function()

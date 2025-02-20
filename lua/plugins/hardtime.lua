@@ -15,6 +15,11 @@ return {
 			"dbee-drawer",
 			"dbee-call-log",
 			"dbee-result",
+			"snacks_terminal",
+			"snacks_dashboard",
+			"snacks_notif",
+			"snacks_terminal",
+			"snacks_win",
 		},
 	},
 }
