@@ -1,6 +1,6 @@
 {
   "diagnostics.globals": ["vim", "Snacks"],
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-  "Lua.diagnostics.globals": ["vim", "Snacks"],
+  "Lua.diagnostics.globals": ["vim", "Snacks", "require"],
   "diagnostics.disable": ["undefined-doc-name"]
 }

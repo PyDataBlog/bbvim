@@ -64,3 +64,12 @@ vim.cmd([[autocmd TermOpen * startinsert]])
 
 -- turn off line numbers in terminal
 vim.cmd([[autocmd TermOpen term://* setlocal nonumber norelativenumber]])
+
+-- mark jupyter notebooks as python filetypes
+vim.filetype.add({
+	pattern = {
+		[".*%.ipynb.*"] = "python",
+		-- uses lua pattern matching
+		-- rathen than naive matching
+	},
+})

@@ -70,7 +70,6 @@ return {
 		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 		-- See the full "keymap" documentation for information on defining your own keymap.
 		keymap = {
-			preset = "enter",
 			["<C-y>"] = { "select_and_accept" },
 
 			["<C-e>"] = { "hide", "fallback" },
@@ -83,12 +82,12 @@ return {
 
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
-			["<C-p>"] = { "select_prev", "fallback" },
-			["<C-n>"] = { "select_next", "fallback" },
+			["<C-p>"] = { "snippet_backward" },
+			["<C-n>"] = { "snippet_forward" },
 
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
-			["<C-k>"] = { "fallback", "show_signature", "hide_signature" },
+			["<C-k>"] = {},
 		},
 		completion = {
 			accept = {
@@ -114,7 +113,7 @@ return {
 				border = "rounded",
 			},
 			list = {
-				selection = { preselect = true, auto_insert = true },
+				selection = { preselect = true, auto_insert = false },
 			},
 			ghost_text = {
 				enabled = false,
@@ -139,7 +138,7 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lazydev", "lsp", "path", "snippets", "buffer", "emoji" },
+			default = { "lazydev", "lsp", "path", "snippets", "buffer", "dadbod", "emoji" },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
@@ -153,6 +152,7 @@ return {
 					score_offset = 15, -- Tune by preference
 					opts = { insert = true }, -- Insert emoji (default) or complete its name
 				},
+				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
 			},
 		},
 	},

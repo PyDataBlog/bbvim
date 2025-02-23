@@ -85,13 +85,10 @@ keymap.set(
 	"<cmd>lua require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })<CR>",
 	{ desc = "Reset Selected Hunk" }
 )
-
 keymap.set("n", "<leader>gS", "<cmd>lua require('gitsigns').stage_buffer()<CR>", { desc = "Stage Buffer" })
 keymap.set("n", "<leader>gR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset Buffer" })
-
 keymap.set("n", "<leader>gu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo Stage Hunk" })
 keymap.set("n", "<leader>gp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview Hunk" })
-
 keymap.set("n", "<leader>gb", "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>", { desc = "Blame Line" })
 keymap.set(
 	"n",
@@ -99,7 +96,6 @@ keymap.set(
 	"<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>",
 	{ desc = "Toggle Line Blame" }
 )
-
 keymap.set("n", "<leader>gd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "Diff This" })
 keymap.set("n", "<leader>gD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Diff This ~" })
 
@@ -149,6 +145,7 @@ keymap.set("n", "<leader>ki", "<cmd>lua require('kulala').inspect()<CR>", { desc
 
 -------------------------------- LSP mappings -----------------------------------
 keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Smart LSP rename" })
 
 ------------------------------  Trouble mappings ------------------------------
 keymap.set("n", "<leader>tt", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Diagnostics (Trouble)" })
@@ -180,7 +177,7 @@ keymap.set("n", "<leader><space>", function() Snacks.picker.smart() end, { desc 
 keymap.set("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "Buffers" })
 keymap.set("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
 keymap.set("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "Command History" })
-keymap.set("n", "<leader>n", function() Snacks.picker.notifications() end, { desc = "Notification History" })
+keymap.set("n", "<leader>nh", function() Snacks.picker.notifications() end, { desc = "Notification History" })
 keymap.set("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
 
 -- find
@@ -231,12 +228,7 @@ keymap.set("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc
 keymap.set("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
 keymap.set("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "LSP Symbols" })
 keymap.set("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "LSP Workspace Symbols" })
-keymap.set(
-  { "n", "v" },
-  "<leader>fm",
-  "<cmd>lua require('conform').format({lsp_fallback = true, async = false, timeout_ms = 1000})<CR>",
-  { desc = "Format file or range (in visual mode)" }
-) -- format document or selection
+keymap.set({ "n", "v" }, "<leader>fm", "<cmd>lua require('conform').format({lsp_fallback = true, async = false, timeout_ms = 1000})<CR>", { desc = "Format file or range (in visual mode)" })
 
 -- Other
 keymap.set("n", "<leader>x", function() Snacks.bufdelete() end, { desc = "Buffer delete" })
@@ -273,6 +265,7 @@ keymap.set("n", "<leader>N", function()
 end, { desc = "Neovim News" })
 
 keymap.set("n", "<leader>ld", function() Snacks.terminal("lazydocker") end, { desc = "Lazydocker" })
+keymap.set("n", "<leader>k9", function() Snacks.terminal("k9s") end, { desc = "k9s" })
 -- stylua: ignore end
 
 ------------------------------ Debugging (DAP) mappings ------------------------------------
@@ -290,3 +283,40 @@ keymap.set("n", "<F1>", "<cmd> DapStepInto <CR>", { desc = "Step into" })
 keymap.set("n", "<F2>", "<cmd> DapStepOver <CR>", { desc = "Step over" })
 keymap.set("n", "<F3>", "<cmd> DapStepOut <CR>", { desc = "Step out" })
 keymap.set("n", "<F8>", "<cmd> DapTerminate <CR>", { desc = "Stop debugging" })
+
+------------------------------- Nvim Jupyter mappings -----------------------------------
+-- Add cells
+keymap.set("n", "<leader>ja", "<cmd>JupyterAddCellBelow<CR>", { desc = "Add Jupyter cell below" })
+keymap.set("n", "<leader>jA", "<cmd>JupyterAddCellAbove<CR>", { desc = "Add Jupyter cell above" })
+
+-- Cell operations
+keymap.set("n", "<leader>jd", "<cmd>JupyterRemoveCell<CR>", { desc = "Remove current Jupyter cell" })
+keymap.set("n", "<leader>jm", "<cmd>JupyterMergeCellAbove<CR>", { desc = "Merge with cell above" })
+keymap.set("n", "<leader>jM", "<cmd>JupyterMergeCellBelow<CR>", { desc = "Merge with cell below" })
+keymap.set("n", "<leader>jt", "<cmd>JupyterConvertCellType<CR>", { desc = "Convert cell type (code/markdown)" })
+
+------------------------------- Python REPL Mappings -------------------------------
+-- stylua: ignore start
+keymap.set("n", "<leader>rs", "<cmd>lua require('nvim-python-repl').send_statement_definition()<CR>", { desc = "Send semantic unit to REPL" })
+keymap.set("v", "<leader>rv", "<cmd>lua require('nvim-python-repl').send_visual_to_repl()<CR>", { desc = "Send visual selection to REPL" })
+keymap.set("n", "<leader>rb", "<cmd>lua require('nvim-python-repl').send_buffer_to_repl()<CR>", { desc = "Send entire buffer to REPL" })
+keymap.set("n", "<leader>rt", "<cmd>lua require('nvim-python-repl').toggle_execute()<CR>", { desc = "Toggle auto-execute after send" })
+keymap.set("n", "<leader>rl", "<cmd>lua require('nvim-python-repl').toggle_vertical()<CR>", { desc = "Toggle vertical/horizontal REPL split" })
+keymap.set("n", "<leader>ro", "<cmd>lua require('nvim-python-repl').open_repl()<CR>", { desc = "Open REPL in split" })
+keymap.set("n", "<leader>rc", "<cmd>lua require('nvim-python-repl').send_current_cell_to_repl()<CR>", { desc = "Send cell under cursor to REPL" })
+-- stylua: ignore end
+------------------------------- Yanky mappings -----------------------------------
+keymap.set("n", "<leader>fp", "<cmd> YankyRingHistory <CR>", { desc = "Open Yank History" })
+
+------------------------------- Neogen mappings ----------------------------------
+-- stylua: ignore start
+keymap.set("n", "<Leader>nf", ":lua require('neogen').generate({ type = 'func' })<CR>", { noremap = true, silent = true, desc = "Generate docs on function"})
+keymap.set("n", "<Leader>nc", ":lua require('neogen').generate({ type = 'class' })<CR>", { noremap = true, silent = true, desc = "Generate docs on a class"})
+
+------------------------------- CodeCompanion mappings -----------------------------------
+keymap.set("n", "<leader>cA", "<cmd>CodeCompanionActions<CR>", { desc = "Trigger Code Companion Actions", silent = true })
+keymap.set("v", "<leader>cA", "<cmd>CodeCompanionActions<CR>", { desc = "Trigger Code Companion Actions in Visual Mode", silent = true })
+keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Code Companion Chat", silent = true })
+keymap.set("v", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Code Companion Chat in Visual Mode", silent = true })
+keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<CR>", { desc = "Add to Code Companion Chat", silent = true })
+-- stylua: ignore end

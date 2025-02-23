@@ -5,10 +5,9 @@ return {
 	dependencies = {
 		"windwp/nvim-ts-autotag",
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		{ "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+		{ "nushell/tree-sitter-nu" },
 	},
 	config = function()
-		-- import nvim-treesitter plugin
 		local treesitter = require("nvim-treesitter.configs")
 
 		-- configure treesitter
@@ -69,6 +68,7 @@ return {
 				"xml",
 				"yaml",
 				"zig",
+				"nu",
 			},
 			incremental_selection = {
 				enable = true,
@@ -114,4 +114,3 @@ return {
 		})
 	end,
 }
-
