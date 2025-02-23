@@ -13,6 +13,7 @@ local plugins = {
 	{ import = "plugins.dropbar" },
 	{ import = "plugins.dadbod" },
 	{ import = "plugins.debug-dap" },
+	{ import = "plugins.dooing" },
 	{ import = "plugins.flash" },
 	{ import = "plugins.gitsigns" },
 	{ import = "plugins.gopher" },
