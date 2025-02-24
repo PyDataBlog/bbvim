@@ -53,6 +53,8 @@ return {
 				"gomodifytags",
 				"goimports",
 				"go-debug-adapter",
+				-- rust
+				"codelldb",
 				------- LANGUAGE SERVERS ----------
 				"gopls",
 				"basedpyright",

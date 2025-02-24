@@ -51,7 +51,7 @@ return {
 			files = { hidden = true },
 		} },
 		quickfile = { enabled = true },
-		scope = { enabled = true },
+		scope = { enabled = false },
 		scroll = { enabled = false },
 		statuscolumn = { enabled = false },
 		words = { enabled = true },

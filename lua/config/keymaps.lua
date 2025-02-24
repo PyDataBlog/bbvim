@@ -320,3 +320,6 @@ keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Tog
 keymap.set("v", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Code Companion Chat in Visual Mode", silent = true })
 keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<CR>", { desc = "Add to Code Companion Chat", silent = true })
 -- stylua: ignore end
+
+------------------------------- DOOING mappings -----------------------------------
+keymap.set("n", "<leader>td", "<cmd>Dooing<CR>", { desc = "Toggle dooing todo app", silent = true })

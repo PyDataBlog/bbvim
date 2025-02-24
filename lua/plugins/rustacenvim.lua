@@ -1,13 +1,16 @@
 return {
 	"mrcjkb/rustaceanvim",
-	version = "^4", -- Recommended
+	version = "^5",
 	ft = { "rust" },
 	opts = {
 		server = {
 			on_attach = function(_, bufnr)
 				vim.keymap.set("n", "K", function()
 					vim.cmd.RustLsp({ "hover", "actions" })
-				end, { buffer = bufnr })
+				end, { silent = true, buffer = bufnr })
+				vim.keymap.set("n", "ca", function()
+					vim.cmd.RustLsp("codeaction")
+				end, { silent = true, buffer = bufnr })
 			end,
 			default_settings = {
 				-- rust-analyzer language server configuration
