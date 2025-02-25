@@ -319,6 +319,9 @@ keymap.set("v", "<leader>cA", "<cmd>CodeCompanionActions<CR>", { desc = "Trigger
 keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Code Companion Chat", silent = true })
 keymap.set("v", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Code Companion Chat in Visual Mode", silent = true })
 keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<CR>", { desc = "Add to Code Companion Chat", silent = true })
+
+------------------------------ Quarto mappings ------------------------------
+keymap.set("n", "<leader>qp", '<cmd>lua require("quarto").quartoPreview()<CR>', { silent = true, noremap = true, desc = "Preview Quarto document" })
 -- stylua: ignore end
 
 ------------------------------- DOOING mappings -----------------------------------

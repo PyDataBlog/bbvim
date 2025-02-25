@@ -37,6 +37,7 @@ local plugins = {
 	{ import = "plugins.noice" },
 	{ import = "plugins.oil" },
 	{ import = "plugins.overseer" },
+	{ import = "plugins.quarto" },
 	{ import = "plugins.rainbow-delimiters" },
 	{ import = "plugins.rust-vim" },
 	{ import = "plugins.rustacenvim" },
