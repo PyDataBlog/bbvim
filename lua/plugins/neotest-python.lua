@@ -2,14 +2,14 @@ return {
 	"nvim-neotest/neotest-python",
 	ft = "python",
 	dependencies = {
-        {
-            "nvim-neotest/neotest",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-                "nvim-treesitter/nvim-treesitter",
-                "antoinemadec/FixCursorHold.nvim",
-            },
-        },
+		{
+			"nvim-neotest/neotest",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"nvim-treesitter/nvim-treesitter",
+				"antoinemadec/FixCursorHold.nvim",
+			},
+		},
 		"mfussenegger/nvim-dap",
 		"mfussenegger/nvim-dap-python",
 	},
@@ -34,3 +34,4 @@ return {
 		})
 	end,
 }
+

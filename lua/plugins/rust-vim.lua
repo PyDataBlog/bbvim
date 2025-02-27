@@ -1,1 +1,4 @@
-return { "rust-lang/rust.vim", ft = { "rust" } }
+return {
+	"rust-lang/rust.vim",
+	ft = { "rust" },
+}

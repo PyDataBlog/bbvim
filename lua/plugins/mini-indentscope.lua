@@ -38,4 +38,3 @@ return {
 		require("mini.indentscope").setup(opts)
 	end,
 }
-

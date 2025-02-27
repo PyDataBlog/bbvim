@@ -1,7 +1,6 @@
 return {
 	"monaqa/dial.nvim",
 	keys = {
-		-- Normal mode
 		{
 			"<C-a>",
 			function()
