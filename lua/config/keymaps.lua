@@ -1,10 +1,11 @@
-local keymap = vim.keymap -- for conciseness
+local keymap = vim.keymap
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 ----------------------- General mappings ------------------------------
 keymap.set("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+keymap.set("n", "<leader>yy", "ggVGy", { desc = "Yank whole buffer" })
 
 -- Insert lines above/below without leaving normal mode
 keymap.set("n", "oo", "o<Esc>k", { silent = true })
@@ -326,3 +327,6 @@ keymap.set("n", "<leader>qp", '<cmd>lua require("quarto").quartoPreview()<CR>', 
 
 ------------------------------- DOOING mappings -----------------------------------
 keymap.set("n", "<leader>td", "<cmd>Dooing<CR>", { desc = "Toggle dooing todo app", silent = true })
+
+------------------------------- SSH Conn Managear mappings -----------------------------------
+keymap.set("n", "<leader>ct", "<cmd>ConnManager toggle<CR>", { desc = "Toggle SSH connection manager", silent = true })

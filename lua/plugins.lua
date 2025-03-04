@@ -1,55 +1,73 @@
 local plugins = {
-	-- Ungrouped Plugins
-	{ import = "plugins.blink-cmp" },
+	-- UI and Appearance
 	{ import = "plugins.bufferline" },
 	{ import = "plugins.catppuccin" },
-	{ import = "plugins.codecompanion" },
-	{ import = "plugins.conform" },
-	{ import = "plugins.conn-manager" },
-	{ import = "plugins.copilot" },
-	{ import = "plugins.copilot-chat" },
-	{ import = "plugins.crates" },
-	{ import = "plugins.csvview" },
 	{ import = "plugins.dropbar" },
-	{ import = "plugins.dadbod" },
-	{ import = "plugins.debug-dap" },
-	{ import = "plugins.dial" },
-	{ import = "plugins.dooing" },
-	{ import = "plugins.flash" },
-	{ import = "plugins.gitsigns" },
-	{ import = "plugins.gopher" },
-	{ import = "plugins.grug-far" },
-	{ import = "plugins.hardtime" },
-	{ import = "plugins.inlayhint-filler" },
-	{ import = "plugins.kubectl-nvim" },
-	{ import = "plugins.kuala-nvim" },
 	{ import = "plugins.lualine" },
-	{ import = "plugins.marks-nvim" },
-	{ import = "plugins.markview" },
+	{ import = "plugins.noice" },
+	{ import = "plugins.rainbow-delimiters" },
+	{ import = "plugins.smear-cursor" },
+	{ import = "plugins.tiny-glimmer" },
+	{ import = "plugins.todo-comments" },
+	{ import = "plugins.trouble" },
+
+	-- LSP and Code Intelligence
+	{ import = "plugins.inlayhint-filler" },
 	{ import = "plugins.mason" },
 	{ import = "plugins.neogen" },
-	{ import = "plugins.neotest-python" },
-	{ import = "plugins.nvim-dbee" },
-	{ import = "plugins.nvim-jupyter-client" },
 	{ import = "plugins.nvim-lint" },
 	{ import = "plugins.nvim-lspconfig" },
 	{ import = "plugins.nvim-ufo" },
-	{ import = "plugins.noice" },
+	{ import = "plugins.treesitter" },
+	{ import = "plugins.conform" },
+
+	-- Navigation and Motion
+	{ import = "plugins.flash" },
+	{ import = "plugins.marks-nvim" },
 	{ import = "plugins.oil" },
-	{ import = "plugins.overseer" },
+	{ import = "plugins.which-key" },
+
+	-- Language-specific Tools
+	{ import = "plugins.crates" },
+	{ import = "plugins.gopher" },
 	{ import = "plugins.quarto" },
-	{ import = "plugins.rainbow-delimiters" },
 	{ import = "plugins.rust-vim" },
 	{ import = "plugins.rustacenvim" },
-	{ import = "plugins.smear-cursor" },
-	{ import = "plugins.snacks-nvim" },
-	{ import = "plugins.tiny-glimmer" },
-	{ import = "plugins.tmux-nvim" },
-	{ import = "plugins.todo-comments" },
-	{ import = "plugins.treesitter" },
-	{ import = "plugins.trouble" },
-	{ import = "plugins.which-key" },
+	{ import = "plugins.nvim-jupyter-client" },
+
+	-- AI and Assistance
+	{ import = "plugins.codecompanion" },
+	{ import = "plugins.copilot" },
+	{ import = "plugins.copilot-chat" },
+
+	-- Git Integration
+	{ import = "plugins.gitsigns" },
+
+	-- Database and Data
+	{ import = "plugins.dadbod" },
+	{ import = "plugins.nvim-dbee" },
+	{ import = "plugins.csvview" },
+
+	-- Editing Enhancements
+	{ import = "plugins.blink-cmp" },
+	{ import = "plugins.dial" },
+	{ import = "plugins.grug-far" },
+	{ import = "plugins.hardtime" },
+	{ import = "plugins.markview" },
 	{ import = "plugins.yanky" },
+
+	-- Testing and Tasks
+	{ import = "plugins.debug-dap" },
+	{ import = "plugins.neotest-python" },
+	{ import = "plugins.overseer" },
+
+	-- Integration Tools
+	{ import = "plugins.conn-manager" },
+	{ import = "plugins.kubectl-nvim" },
+	{ import = "plugins.kuala-nvim" },
+	{ import = "plugins.tmux-nvim" },
+	{ import = "plugins.dooing" },
+	{ import = "plugins.snacks-nvim" },
 
 	-- MINI NVIM Plugins
 	{ import = "plugins.mini-ai" },

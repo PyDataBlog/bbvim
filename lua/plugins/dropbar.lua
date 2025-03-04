@@ -1,6 +1,9 @@
 return {
 	"Bekaboo/dropbar.nvim",
 	event = { "BufReadPre", "BufNewFile" },
+	cond = function()
+		return vim.bo.filetype ~= "ssh" -- Only load if filetype is not 'ssh'
+	end,
 	config = function()
 		local dropbar_api = require("dropbar.api")
 		vim.keymap.set("n", "<Leader>;", dropbar_api.pick, { desc = "Pick symbols in winbar" })

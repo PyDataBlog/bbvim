@@ -10,6 +10,7 @@ return {
 			display = {
 				chat = {
 					render_headers = false,
+					show_settings = true,
 				},
 			},
 			strategies = {
@@ -29,7 +30,7 @@ return {
 					},
 				},
 				inline = {
-					adapter = "copilot",
+					adapter = "claude-3.7-sonnet",
 				},
 			},
 			adapters = {
@@ -37,7 +38,7 @@ return {
 					return require("codecompanion.adapters").extend("copilot", {
 						schema = {
 							model = {
-								default = "claude-3.5-sonnet",
+								default = "claude-3.7-sonnet-thought",
 							},
 						},
 					})
