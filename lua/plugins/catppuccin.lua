@@ -78,6 +78,11 @@ return {
 					scope_color = "text", -- catppuccin color (e.g., `lavender`) Default: text
 					colored_indent_levels = false,
 				},
+				dadbod_ui = true,
+				copilot_vim = true,
+				lsp_saga = true,
+				window_picker = true,
+
 				-- For more plugin integrations, please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
 		})

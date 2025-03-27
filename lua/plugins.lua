@@ -7,7 +7,7 @@ local plugins = {
 	{ import = "plugins.noice" },
 	{ import = "plugins.rainbow-delimiters" },
 	{ import = "plugins.smear-cursor" },
-	{ import = "plugins.tiny-glimmer" },
+	-- { import = "plugins.tiny-glimmer" },
 	{ import = "plugins.todo-comments" },
 	{ import = "plugins.trouble" },
 
@@ -39,6 +39,7 @@ local plugins = {
 	{ import = "plugins.codecompanion" },
 	{ import = "plugins.copilot" },
 	{ import = "plugins.copilot-chat" },
+	{ import = "plugins.mcphub-nvim" },
 
 	-- Git Integration
 	{ import = "plugins.gitsigns" },

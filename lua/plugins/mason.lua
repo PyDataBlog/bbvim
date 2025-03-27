@@ -73,6 +73,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"yaml-language-server",
+				"typos-lsp",
 			},
 			auto_update = true,
 			run_on_start = true,
