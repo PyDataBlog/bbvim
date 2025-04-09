@@ -20,6 +20,7 @@ return {
 			"snacks_notif",
 			"snacks_terminal",
 			"snacks_win",
+			"trouble",
 		},
 	},
 }
