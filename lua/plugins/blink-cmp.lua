@@ -52,7 +52,8 @@ return {
 				},
 			},
 		},
-		{ "moyiz/blink-emoji.nvim" },
+		-- { "moyiz/blink-emoji.nvim" },
+		{ "fang2hou/blink-copilot" },
 	},
 
 	-- use a release tag to download pre-built binaries
@@ -83,8 +84,24 @@ return {
 			["<Up>"] = { "select_prev", "fallback" },
 			["<Down>"] = { "select_next", "fallback" },
 			["<C-p>"] = { "snippet_backward" },
-			["<C-n>"] = { "snippet_forward" },
-
+			["<C-n>"] = {
+				function(cmp)
+					if vim.b[vim.api.nvim_get_current_buf()].nes_state then
+						cmp.hide()
+						return (
+							require("copilot-lsp.nes").apply_pending_nes()
+							and require("copilot-lsp.nes").walk_cursor_end_edit()
+						)
+					end
+					if cmp.snippet_active() then
+						return cmp.accept()
+					else
+						return cmp.select_and_accept()
+					end
+				end,
+				"snippet_forward",
+				"fallback",
+			},
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 			["<C-k>"] = {},
@@ -139,7 +156,7 @@ return {
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
 			-- default = { "lazydev", "lsp", "path", "snippets", "buffer", "dadbod", "emoji" },
-			default = { "lazydev", "lsp", "path", "snippets", "buffer", "dadbod" },
+			default = { "lazydev", "lsp", "path", "snippets", "buffer", "dadbod", "copilot" },
 			providers = {
 				lazydev = {
 					name = "LazyDev",
@@ -147,13 +164,19 @@ return {
 					-- make lazydev completions top priority (see `:h blink.cmp`)
 					score_offset = 100,
 				},
-				emoji = {
-					module = "blink-emoji",
-					name = "Emoji",
-					score_offset = 15, -- Tune by preference
-					opts = { insert = true }, -- Insert emoji (default) or complete its name
-				},
+				-- emoji = {
+				-- 	module = "blink-emoji",
+				-- 	name = "Emoji",
+				-- 	score_offset = 15, -- Tune by preference
+				-- 	opts = { insert = true }, -- Insert emoji (default) or complete its name
+				-- },
 				dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
+				copilot = {
+					name = "copilot",
+					module = "blink-copilot",
+					score_offset = 100,
+					async = true,
+				},
 			},
 		},
 	},
