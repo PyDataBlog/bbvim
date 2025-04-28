@@ -40,6 +40,7 @@ local plugins = {
 	{ import = "plugins.copilot" },
 	{ import = "plugins.copilot-chat" },
 	{ import = "plugins.mcphub-nvim" },
+	{ import = "plugins.copilot-lsp" },
 
 	-- Git Integration
 	{ import = "plugins.gitsigns" },

@@ -52,6 +52,10 @@ return {
 				"gotests",
 				"gomodifytags",
 				"goimports",
+				"impl",
+				"iferr",
+				"gotestsum",
+				"golines",
 				"go-debug-adapter",
 				-- rust
 				"codelldb",
