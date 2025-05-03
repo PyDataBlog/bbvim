@@ -59,6 +59,9 @@ return {
 				"go-debug-adapter",
 				-- rust
 				"codelldb",
+				-- makefiles
+				"checkmake",
+
 				------- LANGUAGE SERVERS ----------
 				"gopls",
 				"basedpyright",
