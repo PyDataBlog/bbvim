@@ -1,6 +1,6 @@
 return {
 	"olimorris/codecompanion.nvim",
-	lazy = true,
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
@@ -30,7 +30,7 @@ return {
 					},
 				},
 				inline = {
-					adapter = "claude-3.7-sonnet",
+					adapter = "copilot",
 				},
 			},
 			adapters = {
@@ -38,7 +38,7 @@ return {
 					return require("codecompanion.adapters").extend("copilot", {
 						schema = {
 							model = {
-								default = "claude-3.7-sonnet-thought",
+								default = "gemini-2.5-pro",
 							},
 						},
 					})
