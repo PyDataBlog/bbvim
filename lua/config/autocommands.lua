@@ -105,3 +105,67 @@ vim.api.nvim_create_autocmd("ModeChanged", {
 		pcall(vim.diagnostic.show)
 	end,
 })
+
+-- Global LspAttach Autocommand
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
+	callback = function(event)
+		local client = vim.lsp.get_client_by_id(event.data.client_id)
+		local bufnr = event.buf
+
+		-- Conditional setup based on client capabilities or name
+		if client then
+			-- Apply Ruff-specific setting
+			if client.name == "ruff" or client.name == "ruff_lsp" then
+				local python_hover_provider_found = false
+				local active_clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+				for _, other_client in ipairs(active_clients) do
+					if
+						other_client.id ~= client.id
+						and vim.tbl_contains({ "basedpyright", "pyright", "jedi_language_server" }, other_client.name)
+						and other_client.supports_method("textDocument/hover")
+					then
+						python_hover_provider_found = true
+						break
+					end
+				end
+				if python_hover_provider_found then
+					client.server_capabilities.hoverProvider = false
+				end
+			end
+
+			-- Enable features based on capabilities
+			if client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, bufnr) then
+				local highlight_augroup = vim.api.nvim_create_augroup("LspDocumentHighlight", { clear = false })
+				vim.api.nvim_create_autocmd(
+					{ "CursorHold", "CursorHoldI" },
+					{ group = highlight_augroup, buffer = bufnr, callback = vim.lsp.buf.document_highlight }
+				)
+				vim.api.nvim_create_autocmd(
+					{ "CursorMoved", "CursorMovedI" },
+					{ group = highlight_augroup, buffer = bufnr, callback = vim.lsp.buf.clear_references }
+				)
+				vim.api.nvim_create_autocmd("LspDetach", {
+					group = vim.api.nvim_create_augroup("UserLspDetachHighlights", { clear = true }),
+					callback = function(detach_event)
+						if detach_event.buf == bufnr then
+							vim.lsp.buf.clear_references()
+							vim.api.nvim_clear_autocmds({ group = "LspDocumentHighlight", buffer = bufnr })
+						end
+					end,
+				})
+			end
+			if client:supports_method(vim.lsp.protocol.Methods.textDocument_codeLens, bufnr) then
+				vim.lsp.codelens.refresh()
+				vim.api.nvim_create_autocmd(
+					{ "BufEnter", "CursorHold", "InsertLeave" },
+					{ buffer = bufnr, callback = vim.lsp.codelens.refresh }
+				)
+			end
+			-- Inlay hints disabled by default, enable if desired
+			-- if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, bufnr) then
+			--     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+			-- end
+		end
+	end,
+})

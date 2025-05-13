@@ -39,7 +39,6 @@ local plugins = {
 	{ import = "plugins.codecompanion" },
 	{ import = "plugins.copilot" },
 	{ import = "plugins.copilot-chat" },
-	{ import = "plugins.mcphub-nvim" },
 	{ import = "plugins.copilot-lsp" },
 
 	-- Git Integration
