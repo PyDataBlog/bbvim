@@ -188,8 +188,8 @@ keymap.set("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Fi
 keymap.set("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
 keymap.set("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
 keymap.set("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
-keymap.set("n", "<leader>ft", function() Snacks.picker.todo_comments() end, { desc = "TODOs" })
-keymap.set("n", "<leader>fT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, { desc = "TODO/FIX/FIXMEs" })
+keymap.set("n", "<leader>fx", function() Snacks.picker.todo_comments() end, { desc = "TODOs" })
+keymap.set("n", "<leader>fX", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, { desc = "TODO/FIX/FIXMEs" })
 
 -- Grep
 keymap.set("n", "<leader>sb", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
