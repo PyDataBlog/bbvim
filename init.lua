@@ -2,6 +2,7 @@
 require("config.options")
 require("config.keymaps")
 require("config.autocommands")
+local lsp_helper = require("helpers.lsp")
 
 -- Setup lazy.nvim (package manager)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -23,5 +24,5 @@ require("lazy").setup("plugins")
 
 -- Enable the language servers
 -- Neovim will look for a configuration in 'lsp/*.lua'.
-vim.lsp.enable({ 'lua_ls' })
-
+-- vim.lsp.enable({ 'lua_ls' })
+lsp_helper.enable_discovered_servers()

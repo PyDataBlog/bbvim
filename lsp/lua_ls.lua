@@ -5,7 +5,7 @@ return {
   settings = {
     Lua = {
       codeLens = {
-          enable = true,
+          enable = false,
       },
       runtime = {
         version = "LuaJIT",
@@ -15,7 +15,7 @@ return {
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = true,
+        checkThirdParty = false,
       },
       telemetry = {
         enable = false,

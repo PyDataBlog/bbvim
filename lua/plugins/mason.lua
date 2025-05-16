@@ -19,6 +19,8 @@ return {
     require("mason-tool-installer").setup({
       ensure_installed = {
         "lua-language-server",
+        "basedpyright",
+        "ruff",
       },
       auto_update = false,
       run_mason_update_on_startup = true,
