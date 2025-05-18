@@ -185,10 +185,30 @@ keymap.set("n", "<leader>tL", "<cmd>Trouble loclist toggle<CR>", { desc = "Locat
 keymap.set("n", "<leader>tQ", "<cmd>Trouble qflist toggle<CR>", { desc = "Quickfix List (Trouble)" })
 
 ------------------------------- CodeCompanion mappings -----------------------------------
-keymap.set("n", "<leader>cA", "<cmd>CodeCompanionActions<CR>", { desc = "Trigger Code Companion Actions", silent = true })
-keymap.set("v", "<leader>cA", "<cmd>CodeCompanionActions<CR>", { desc = "Trigger Code Companion Actions in Visual Mode", silent = true })
-keymap.set("n", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Code Companion Chat", silent = true })
-keymap.set("v", "<leader>cc", "<cmd>CodeCompanionChat Toggle<CR>", { desc = "Toggle Code Companion Chat in Visual Mode", silent = true })
+keymap.set(
+	"n",
+	"<leader>cA",
+	"<cmd>CodeCompanionActions<CR>",
+	{ desc = "Trigger Code Companion Actions", silent = true }
+)
+keymap.set(
+	"v",
+	"<leader>cA",
+	"<cmd>CodeCompanionActions<CR>",
+	{ desc = "Trigger Code Companion Actions in Visual Mode", silent = true }
+)
+keymap.set(
+	"n",
+	"<leader>cc",
+	"<cmd>CodeCompanionChat Toggle<CR>",
+	{ desc = "Toggle Code Companion Chat", silent = true }
+)
+keymap.set(
+	"v",
+	"<leader>cc",
+	"<cmd>CodeCompanionChat Toggle<CR>",
+	{ desc = "Toggle Code Companion Chat in Visual Mode", silent = true }
+)
 keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<CR>", { desc = "Add to Code Companion Chat", silent = true })
 
 ------------------------------ Bufferline mappings ------------------------------
@@ -213,3 +233,39 @@ keymap.set("n", "<F2>", "<cmd> DapStepOver <CR>", { desc = "Step over" })
 keymap.set("n", "<F3>", "<cmd> DapStepOut <CR>", { desc = "Step out" })
 keymap.set("n", "<F8>", "<cmd> DapTerminate <CR>", { desc = "Stop debugging" })
 
+------------------ Gitsigns mappings  -------------------
+-- Navigation
+keymap.set("n", "]g", "<cmd>lua require('gitsigns').next_hunk()<CR>", { desc = "Next Hunk" })
+keymap.set("n", "[g", "<cmd>lua require('gitsigns').prev_hunk()<CR>", { desc = "Previous Hunk" })
+
+-- Actions
+keymap.set("n", "<leader>gs", "<cmd>lua require('gitsigns').stage_hunk()<CR>", { desc = "Stage Hunk" })
+keymap.set("n", "<leader>gr", "<cmd>lua require('gitsigns').reset_hunk()<CR>", { desc = "Reset Hunk" })
+keymap.set(
+	"v",
+	"<leader>gs",
+	"<cmd>lua require('gitsigns').stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })<CR>",
+	{ desc = "Stage Selected Hunk" }
+)
+keymap.set(
+	"v",
+	"<leader>gr",
+	"<cmd>lua require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })<CR>",
+	{ desc = "Reset Selected Hunk" }
+)
+keymap.set("n", "<leader>gS", "<cmd>lua require('gitsigns').stage_buffer()<CR>", { desc = "Stage Buffer" })
+keymap.set("n", "<leader>gR", "<cmd>lua require('gitsigns').reset_buffer()<CR>", { desc = "Reset Buffer" })
+keymap.set("n", "<leader>gu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>", { desc = "Undo Stage Hunk" })
+keymap.set("n", "<leader>gp", "<cmd>lua require('gitsigns').preview_hunk()<CR>", { desc = "Preview Hunk" })
+keymap.set("n", "<leader>gb", "<cmd>lua require('gitsigns').blame_line({ full = true })<CR>", { desc = "Blame Line" })
+keymap.set(
+	"n",
+	"<leader>gB",
+	"<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>",
+	{ desc = "Toggle Line Blame" }
+)
+keymap.set("n", "<leader>gd", "<cmd>lua require('gitsigns').diffthis()<CR>", { desc = "Diff This" })
+keymap.set("n", "<leader>gD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", { desc = "Diff This ~" })
+
+-- Text object
+keymap.set({ "o", "x" }, "ih", "<cmd>lua require('gitsigns').select_hunk()<CR>", { desc = "Select Hunk" })

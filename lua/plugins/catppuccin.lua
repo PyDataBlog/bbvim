@@ -135,8 +135,8 @@ return {
 				end
 			end,
 		})
-    
-        -- Load the colorscheme
-    vim.cmd.colorscheme("catppuccin")
+
+		-- Load the colorscheme
+		vim.cmd.colorscheme("catppuccin")
 	end,
 }

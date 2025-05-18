@@ -11,12 +11,12 @@ return {
 			build = "npm install -g mcp-hub@latest",
 			config = true,
 		},
-      -- {
-      --   "Davidyz/VectorCode", -- Index and search code in your repositories
-      --   version = "*",
-      --   build = "pipx upgrade vectorcode",
-      --   dependencies = { "nvim-lua/plenary.nvim" },
-      -- },
+		-- {
+		--   "Davidyz/VectorCode", -- Index and search code in your repositories
+		--   version = "*",
+		--   build = "pipx upgrade vectorcode",
+		--   dependencies = { "nvim-lua/plenary.nvim" },
+		-- },
 	},
 	config = function()
 		require("codecompanion").setup({

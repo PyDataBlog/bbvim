@@ -1,5 +1,6 @@
+---@class vim.lsp.Config
 return {
-  cmd = { "ty", "server" },
-  filetypes = { "python" },
-  root_dir = vim.fs.root(0, { ".git/", "pyproject.toml" }),
+	cmd = { "ty", "server" },
+	filetypes = { "python" },
+	root_dir = vim.fs.root(0, { ".git/", "pyproject.toml" }),
 }
