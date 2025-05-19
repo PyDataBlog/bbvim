@@ -39,7 +39,7 @@ return {
 				"typescript-language-server",
 				"yaml-language-server",
 				"typos-lsp",
-				"harper-ls",
+				-- "harper-ls",
 				"html-lsp",
 				"json-lsp",
 				"rust-analyzer",
