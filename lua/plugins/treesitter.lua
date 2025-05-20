@@ -69,6 +69,8 @@ return {
 				"yaml",
 				"zig",
 				"nu",
+				"norg",
+				"scss",
 			},
 			incremental_selection = {
 				enable = true,

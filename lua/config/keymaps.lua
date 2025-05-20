@@ -269,3 +269,24 @@ keymap.set("n", "<leader>gD", "<cmd>lua require('gitsigns').diffthis('~')<CR>", 
 
 -- Text object
 keymap.set({ "o", "x" }, "ih", "<cmd>lua require('gitsigns').select_hunk()<CR>", { desc = "Select Hunk" })
+
+------------------------------- Trim whitespace mappings -----------------------------------
+keymap.set("n", "<leader>tw", "<cmd>lua MiniTrailspace.trim()<cr>", { desc = "Trim trailing whitespace" })
+
+------------------------------- Oil mappings -----------------------------------
+keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open Oil" })
+
+------------------------------ Which Key mappings ------------------------------
+keymap.set("n", "<leader>wK", "<cmd>WhichKey<CR>", { desc = "Display All Keymaps" })
+keymap.set(
+	"n",
+	"<leader>wk",
+	"<cmd>lua vim.cmd('WhichKey ' .. vim.fn.input('WhichKey: '))<CR>",
+	{ desc = "Whichkey Query Lookup" }
+)
+
+------------------------------ Kulala mappings -----------------------------------
+keymap.set("n", "<leader>kr", "<cmd>lua require('kulala').run()<CR>", { desc = "Run the current request" })
+keymap.set("n", "<leader>kp", "<cmd>lua require('kulala').jump_prev()<CR>", { desc = "Jump to the previous request" })
+keymap.set("n", "<leader>kn", "<cmd>lua require('kulala').jump_next()<CR>", { desc = "Jump to the next request" })
+keymap.set("n", "<leader>ki", "<cmd>lua require('kulala').inspect()<CR>", { desc = "Inspect the current request" })
