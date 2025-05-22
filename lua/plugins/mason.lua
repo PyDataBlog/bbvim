@@ -88,7 +88,7 @@ return {
 				-- makefiles
 				"checkmake",
 			},
-			auto_update = false,
+			auto_update = true,
 			run_mason_update_on_startup = true,
 		})
 	end,
