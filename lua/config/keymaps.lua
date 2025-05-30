@@ -290,3 +290,20 @@ keymap.set("n", "<leader>kr", "<cmd>lua require('kulala').run()<CR>", { desc = "
 keymap.set("n", "<leader>kp", "<cmd>lua require('kulala').jump_prev()<CR>", { desc = "Jump to the previous request" })
 keymap.set("n", "<leader>kn", "<cmd>lua require('kulala').jump_next()<CR>", { desc = "Jump to the next request" })
 keymap.set("n", "<leader>ki", "<cmd>lua require('kulala').inspect()<CR>", { desc = "Inspect the current request" })
+
+------------------------------ Neotest mappings --------------------------------------------
+keymap.set("n", "<leader>tm", "<cmd>lua require('neotest').run.run()<cr>", { desc = "Test Method" })
+keymap.set(
+	"n",
+	"<leader>tM",
+	"<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>",
+	{ desc = "Test Method DAP" }
+)
+keymap.set("n", "<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", { desc = "Test Class" })
+keymap.set(
+	"n",
+	"<leader>tF",
+	"<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>",
+	{ desc = "Test Class DAP" }
+)
+keymap.set("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", { desc = "Test Summary" })

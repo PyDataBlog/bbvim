@@ -12,10 +12,10 @@ return {
 			config = true,
 		},
 		-- {
-		--   "Davidyz/VectorCode", -- Index and search code in your repositories
-		--   version = "*",
-		--   build = "pipx upgrade vectorcode",
-		--   dependencies = { "nvim-lua/plenary.nvim" },
+		-- 	"Davidyz/VectorCode", -- Index and search code in your repositories
+		-- 	version = "*",
+		-- 	build = "pipx upgrade vectorcode",
+		-- 	dependencies = { "nvim-lua/plenary.nvim" },
 		-- },
 	},
 	config = function()
@@ -23,7 +23,7 @@ return {
 			display = {
 				chat = {
 					render_headers = false,
-					show_settings = true,
+					show_settings = false,
 				},
 			},
 			extensions = {
@@ -69,6 +69,9 @@ return {
 				},
 			},
 			adapters = {
+				opts = {
+					show_model_choices = true,
+				},
 				copilot = function()
 					return require("codecompanion.adapters").extend("copilot", {
 						schema = {

@@ -18,7 +18,7 @@ return {
 
 			-- Exchange text regions
 			exchange = {
-				prefix = "gx",
+				prefix = "gX",
 
 				-- Whether to reindent new text to match previous indent
 				reindent_linewise = true,
@@ -34,7 +34,7 @@ return {
 
 			-- Replace text with register
 			replace = {
-				prefix = "gr",
+				prefix = "gR",
 
 				-- Whether to reindent new text to match previous indent
 				reindent_linewise = true,
@@ -42,7 +42,7 @@ return {
 
 			-- Sort text
 			sort = {
-				prefix = "ga",
+				prefix = "gs",
 
 				-- Function which does the sort
 				func = nil,
