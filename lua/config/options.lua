@@ -43,8 +43,24 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
--- system clipboard by default for all yanks
-opt.clipboard = "unnamedplus"
+-- SSH-aware clipboard configuration
+if vim.env.SSH_TTY then
+	-- Use OSC 52 for SSH sessions
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+		},
+		paste = {
+			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+		},
+	}
+else
+	-- Use system clipboard for local sessions
+	opt.clipboard = "unnamedplus"
+end
 
 -- disable some default providers
 g["loaded_python_provider"] = 0

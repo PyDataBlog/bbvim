@@ -34,6 +34,7 @@ keymap.set("n", "<leader>Y>", "<cmd>%y+<CR>", { desc = "File Copy whole" }) -- c
 
 -------------------------------- Terminal -----------------------------------------------
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode" })
+keymap.set("t", "jk", "<C-\\><C-n>", { noremap = true, silent = true, desc = "Exit terminal mode with jk" })
 
 ------------------------------  window management ---------------------------------
 keymap.set("n", "<leader>s|", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
@@ -307,3 +308,29 @@ keymap.set(
 	{ desc = "Test Class DAP" }
 )
 keymap.set("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", { desc = "Test Summary" })
+
+------------------------------ LSP Debug mappings -----------------------------------
+keymap.set("n", "<leader>lS", function()
+	local clients = vim.lsp.get_clients({ bufnr = 0 })
+	if #clients == 0 then
+		print("No LSP clients attached to current buffer")
+		return
+	end
+
+	for _, client in ipairs(clients) do
+		print("LSP Client:", client.name)
+		if client.config.settings then
+			if client.config.settings.yaml then
+				print("YAML schemas:", vim.inspect(client.config.settings.yaml.schemas or {}))
+			end
+			if client.config.settings.json then
+				print("JSON schemas:", vim.inspect(client.config.settings.json.schemas or {}))
+			end
+		end
+	end
+end, { desc = "Show LSP schemas for current buffer" })
+
+------------------------------ Schema Selector mappings -----------------------------------
+keymap.set("n", "<leader>ys", function()
+	require("helpers.schema").select_crd_schema()
+end, { desc = "Select YAML CRD Schema" })
