@@ -34,6 +34,7 @@ return {
 				"dot-language-server",
 				"html-lsp",
 				"json-lsp",
+				"julia-lsp",
 				"lua-language-server",
 				"tailwindcss-language-server",
 				"typescript-language-server",
