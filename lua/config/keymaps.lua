@@ -334,3 +334,6 @@ end, { desc = "Show LSP schemas for current buffer" })
 keymap.set("n", "<leader>ys", function()
 	require("helpers.schema").select_crd_schema()
 end, { desc = "Select YAML CRD Schema" })
+
+------------------------------ Floaterm mappings -----------------------------------
+keymap.set("n", "<leader>'", "<cmd>FloatermToggle<CR>", { desc = "Toggle float terminal", silent = true })
