@@ -44,7 +44,7 @@ return {
 			svelte = { "prettierd" },
 			css = { "prettierd" },
 			html = { "prettierd" },
-			json = { "prettierd" },
+			json = { "json-lsp" },
 			yaml = { "prettierd" },
 			markdown = { "prettierd" },
 			graphql = { "prettierd" },
