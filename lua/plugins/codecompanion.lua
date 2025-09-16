@@ -69,18 +69,20 @@ return {
 				},
 			},
 			adapters = {
-				opts = {
-					show_model_choices = true,
-				},
-				copilot = function()
-					return require("codecompanion.adapters").extend("copilot", {
-						schema = {
-							model = {
-								default = "gemini-2.5-pro",
+				http = {
+					opts = {
+						show_model_choices = true,
+					},
+					copilot = function()
+						return require("codecompanion.adapters").extend("copilot", {
+							schema = {
+								model = {
+									default = "gemini-2.5-pro",
+								},
 							},
-						},
-					})
-				end,
+						})
+					end,
+				},
 			},
 		})
 	end,
